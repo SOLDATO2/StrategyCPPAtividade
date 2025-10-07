@@ -13,7 +13,7 @@
 #include "Utils.h"
 #include "enums/TipoArma.h"
 
-class Personagem; // forward declaration: suficiente para ponteiros/referências
+class Personagem; // forward declaration
 
 class Arma {
 protected:

@@ -11,14 +11,14 @@
 
 class Utils {
 public:
-    static inline void seed() {
+    static void seed() {
         std::srand(static_cast<unsigned>(std::time(nullptr)));
     }
-    static inline int rng(int minV, int maxV) {
+    static int rng(int minV, int maxV) {
         return minV + (std::rand() % (maxV - minV + 1));
     }
 
-    static inline bool chance(int percent) {
+    static bool chance(int percent) {
         return rng(1, 100) <= percent;
     }
 };

@@ -15,19 +15,19 @@
 int main() {
     Utils::seed();
 
-    // Personagens (usando atributos do enunciado)
+    //Personagens
     Personagem* guerreiro = new Personagem("Thorgar", Classe::Guerreiro, 15, 8, 5, 120, 50);
     Personagem* arqueiro  = new Personagem("Elandra", Classe::Arqueiro,   8, 15, 7,  90, 80);
     Personagem* mago      = new Personagem("Aramil",  Classe::Mago,       5,  7, 18,  70,150);
-    Personagem* paladino  = new Personagem("Sir Alden", Classe::Paladino,12,10,12, 110,100); // híbrido
+    Personagem* paladino  = new Personagem("Sir Alden", Classe::Paladino,12,10,12, 110,100); // hibrido
 
-    // Armas (Strategy)
+    //Armas
     Arma* espada   = new EspadaLonga();
     Arma* arco     = new ArcoElfico();
     Arma* cajado   = new CajadoArcano();
     Arma* machado  = new MachadoGuerra();
     Arma* adaga    = new AdagaSombria();
-    Arma* sagrada  = new LaminaSagrada(); // extensão
+    Arma* sagrada  = new LaminaSagrada(); // extensao
 
     // Loadouts iniciais
     guerreiro->setArma(espada);
@@ -35,7 +35,7 @@ int main() {
     mago->setArma(cajado);
     paladino->setArma(sagrada);
 
-    // Pequena vantagem furtiva para mostrar o efeito da Adaga depois
+    // vantagem furtiva para mostrar efeito da adaga
     arqueiro->surpreenderProximoAtaque = true;
 
     // Batalha 2x2
@@ -47,10 +47,11 @@ int main() {
 
     b.rodar();
 
-    // Demo rápida: troca de Strategy em runtime (arqueiro troca para Adaga)
-    std::cout << "\n== Troca de arma em runtime (Strategy) ==\n";
-    // Reset leve (só vida/mana para reutilizar instâncias)
-    // Para simplicidade, destruímos e recriamos:
+    // arqueiro troca para Adaga, troca de strategy
+
+    std::cout << "\n== Troca de arma/Strategy em runtime ==\n";
+    // Reset leve (apenas vida/mana para reutilizar instancias)
+    // Para simplicidade, destruimos e recriamos:
     delete guerreiro; delete arqueiro; delete mago; delete paladino;
     guerreiro = new Personagem("Thorgar", Classe::Guerreiro, 15, 8, 5, 120, 50);
     arqueiro  = new Personagem("Elandra", Classe::Arqueiro,   8, 15, 7,  90, 80);
@@ -67,7 +68,7 @@ int main() {
     std::cout << "\n-- Turno 1 --\n";
     guerreiro->atacar(*mago);
     if (paladino->estaVivo()) area.push_back(paladino);
-    arqueiro->atacar(*mago, &area); // Arco em área
+    arqueiro->atacar(*mago, &area); // Arco em area
     if (paladino->estaVivo()) paladino->atacar(*guerreiro);
     if (mago->estaVivo()) mago->atacar(*arqueiro);
     guerreiro->processarEfeitosDeTurno();

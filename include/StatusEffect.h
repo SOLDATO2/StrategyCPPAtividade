@@ -20,13 +20,19 @@ public:
     StatusEffect(const std::string& n, int t) : nome(n), turnosRestantes(t) {}
     virtual ~StatusEffect() = default;
 
-    const std::string& getNome() const { return nome; }
-    int getTurnosRestantes() const { return turnosRestantes; }
+    const std::string& getNome() const {
+        return nome;
+    }
 
-    // “Interface” ao estilo Java: o efeito descreve o que ele faz,
-    // sem conhecer Personagem.
+    int getTurnosRestantes() const {
+        return turnosRestantes;
+    }
+
+    // Interface
     virtual int  danoPorTurno() const = 0;     // 0 se não causar dano periódico
-    virtual bool eAtordoamento() const { return false; }
+    virtual bool eAtordoamento() const {
+        return false;
+    }
 
     // avança 1 turno; retorna true se o efeito expirou
     bool tick() {

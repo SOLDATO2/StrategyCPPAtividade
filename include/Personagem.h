@@ -50,7 +50,7 @@ public:
     [[nodiscard]] int getVidaMax() const { return vidaMax; }
     [[nodiscard]] int getManaMax() const { return manaMax; }
 
-    // ---------- Utilitários ----------
+    // ---------- Utilitarios ----------
     void curar(int qtd) { vida = std::min(vida + qtd, vidaMax); }
     void ganharMana(int qtd) { mana = std::min(mana + qtd, manaMax); }
 
@@ -145,11 +145,11 @@ public:
         // passivas por turno
         if (classe == Classe::Mago) {
             ganharMana(10);
-            std::cout << "  >> Regeneração de mana (Mago) em " << nome
+            std::cout << "  >> Regeneracao de mana (Mago) em " << nome
                       << ": +10 (" << mana << ")\n";
         } else if (classe == Classe::Paladino) {
             ganharMana(5);
-            std::cout << "  >> Regeneração de mana (Paladino) em " << nome
+            std::cout << "  >> Regeneracao de mana (Paladino) em " << nome
                       << ": +5 (" << mana << ")\n";
         }
     }
@@ -169,9 +169,9 @@ public:
 
     // ---------- Strategy: delega o ataque para a Arma equipada ----------
     void atacar(Personagem& alvo, std::vector<Personagem*>* area = nullptr) {
-        if (!estaVivo())    { std::cout << "  >> " << nome << " está fora de combate.\n"; return; }
-        if (estaAtordoado()){ std::cout << "  >> " << nome << " está atordoado e perde o turno.\n"; return; }
-        if (!arma)          { std::cout << "  >> " << nome << " está sem arma equipada.\n"; return; }
+        if (!estaVivo())    { std::cout << "  >> " << nome << " esta fora de combate.\n"; return; }
+        if (estaAtordoado()){ std::cout << "  >> " << nome << " esta atordoado e perde o turno.\n"; return; }
+        if (!arma)          { std::cout << "  >> " << nome << " esta sem arma equipada.\n"; return; }
 
         std::cout << nome << " ataca com " << arma->getNome()
                   << " em " << alvo.getNome() << "\n";

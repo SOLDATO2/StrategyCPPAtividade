@@ -78,7 +78,7 @@ public:
         bool bVenceu = timeVivo(equipeB);
         if (aVenceu && !bVenceu) std::cout << "Time A venceu!\n";
         else if (!aVenceu && bVenceu) std::cout << "Time B venceu!\n";
-        else std::cout << "Empate técnico.\n";
+        else std::cout << "Empate tecnico.\n";
     }
 };
 
